@@ -15,8 +15,8 @@ export default function Modal() {
 
 instance.show()
   return (
-    <div class="overlay">
-      <div className={s.modal}>
+    <div className={s.Overlay}>
+      <div className={s.Modal}>
         <img src="" alt="" />
       </div>
     </div>

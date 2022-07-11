@@ -1,22 +1,20 @@
 import { Component } from 'react';
 import s from './Searchbar.module.css';
-import { ReactComponent as Search } from './search.svg';
+// import { ReactComponent as Search } from './search.svg';
 
 class Searchbar extends Component {
   state = {};
 
   render() {
     return (
-      <header className={s.searchbar}>
-        <form className={s.form}>
-          <button type="submit" className={s.button}>
-            <span className={s.button_label}>
-              {<Search style={{ width: '25px', height: '25px', }} />}
-            </span>
+      <header className={s.Searchbar}>
+        <form className={s.SearchForm}>
+          <button type="submit" className={s.SearchForm_button}>
+          <span className={s.SearchForm_button_label}>Search</span>
           </button>
 
           <input
-            className={s.input}
+            className={s.SearchForm_input}
             type="text"
             autoComplete="off"
             autoFocus

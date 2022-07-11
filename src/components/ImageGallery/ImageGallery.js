@@ -2,7 +2,7 @@ import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import s from './ImageGallery.module.css';
 function ImageGallery() {
   return (
-    <ul className={s.gallery}>
+    <ul className={s.ImageGallery}>
       <ImageGalleryItem />
     </ul>
   );

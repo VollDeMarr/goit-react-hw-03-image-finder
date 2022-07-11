@@ -1,7 +1,8 @@
+import s from './ImageGalleryItem.module.css'
 function ImageGalleryItem() {
   return (
-    <li class="gallery-item">
-      <img src="" alt="" />
+    <li className={s.ImageGalleryItem}>
+      <img className={s.ImageGalleryItemImage} src="" alt="" />
     </li>
   );
 }
