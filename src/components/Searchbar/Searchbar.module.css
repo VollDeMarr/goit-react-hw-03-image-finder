@@ -14,8 +14,8 @@
   border: none;
   background-color: #fff;
 }
-/* .button_label {} */
 .input {
   outline: none;
   border: none;
+  width: 300px;
 }
