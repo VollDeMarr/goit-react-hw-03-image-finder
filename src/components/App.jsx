@@ -1,4 +1,5 @@
 import Searchbar from './Searchbar/Searchbar'
+import LoaderFn from './Loader/Loader'
 import Button from './Button/Button'
 import { Component } from 'react';
 // export const App = () => {
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div>
       <Searchbar />
+      <LoaderFn/>
       <Button />
     </div>
     )
