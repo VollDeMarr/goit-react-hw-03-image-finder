@@ -2,6 +2,7 @@ import Searchbar from './Searchbar/Searchbar'
 import LoaderFn from './Loader/Loader'
 import Button from './Button/Button'
 import { Component } from 'react';
+import s from './App.module.css'
 // export const App = () => {
 //   return (
     // <div>
@@ -13,9 +14,14 @@ import { Component } from 'react';
 
 class App extends Component {
   state = {}
+
+componentDidMount() { 
+  fetch()
+ }
+
   render(){ 
     return (
-      <div>
+      <div className={s.App}>
       <Searchbar />
       <LoaderFn/>
       <Button />
