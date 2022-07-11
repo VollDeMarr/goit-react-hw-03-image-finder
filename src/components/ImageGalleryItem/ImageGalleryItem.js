@@ -1,4 +1,4 @@
-import s from './ImageGalleryItem.module.css'
+import s from './ImageGalleryItem.module.css';
 function ImageGalleryItem() {
   return (
     <li className={s.ImageGalleryItem}>

@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import s from './Searchbar.module.css';
-// import { ReactComponent as Search } from './search.svg';
 
 class Searchbar extends Component {
   state = {};
