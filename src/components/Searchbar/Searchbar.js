@@ -3,28 +3,32 @@ import s from './Searchbar.module.css';
 
 class Searchbar extends Component {
   state = {
-    request: null,
-    loading: false,
-    page: 1,
-    KEY: '28064028-9753e04b4800a7fc07442f07d',
+    request: '',
+    // loading: false,
+    // page: 1,
+    // KEY: '28064028-9753e04b4800a7fc07442f07d',
   };
 
-  componentDidMount() {
-    const { page, KEY, request } = this.state;
-    this.setState({ loading: true });
-    fetch(
-      `https://pixabay.com/api/?q=${request}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`
-    )
-      .then(r => r.json())
-      .then(request => {
-        // console.log(request.hits);
-        this.setState({ request });
-      })
-      .finally(() => this.setState({ loading: false }));
-  }
+  // componentDidMount() {
+  //   const { page, KEY, request } = this.state;
+  //   this.setState({ loading: true });
+  //   fetch(
+  //     `https://pixabay.com/api/?q=${request}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`
+  //   )
+  //     .then(r => r.json())
+  //     .then(request => {
+  //       // console.log(request.hits);
+  //       this.setState({ request });
+  //     })
+  //     .finally(() => this.setState({ loading: false }));
+  // }
 
   submitForm = e => {
     e.preventDefault();
+    if (this.state.request.trim() === '') {
+      return
+    }
+    this.props.onSubmit(this.state.request)
     this.setState({ request: '' });
   };
   changeInput = e => {
@@ -34,7 +38,7 @@ class Searchbar extends Component {
   render() {
     return (
       <header className={s.Searchbar}>
-        <form className={s.SearchForm} onSubmit={this.submitForm}>
+        <form onSubmit={this.submitForm} className={s.SearchForm}>
           <button type="submit" className={s.SearchForm_button}>
             <span className={s.SearchForm_button_label}>Search</span>
           </button>
