@@ -12,6 +12,7 @@ class ImageGallery extends Component {
     error: null,
     status: 'idle',
   };
+
   async componentDidUpdate(prevProps, prevState) {
     if (
       prevProps.requestName !== this.props.requestName ||
@@ -27,12 +28,16 @@ class ImageGallery extends Component {
       if (this.state.page === 1) {
         this.setState({ items: parsed.hits, status: 'resolved' });
       } else {
-        this.setState(() => {
-          return {
-            items: [...prevState.items, ...parsed.hits],
-            status: 'resolved',
-          };
-        });
+        if (prevProps.requestName !== this.props.requestName) {
+          this.setState({ items: parsed.hits, status: 'resolved' });
+        } else {
+          this.setState(() => {
+            return {
+              items: [...prevState.items, ...parsed.hits],
+              status: 'resolved',
+            };
+          });
+        }
       }
     }
   }
@@ -46,28 +51,6 @@ class ImageGallery extends Component {
 
   render() {
     const { items, error, status } = this.state;
-    // if (status === 'idle') {
-    // }
-    // if (status === 'pending') {
-    //   return (
-    //     <>
-    //       <Loader />
-    //     </>
-    //   );
-    // }
-    // if (status === 'rejected') {
-    //   return <h1>{error.message}</h1>;
-    // }
-    // if (status === 'resolved') {
-    // return (
-    // <>
-    //   <ul className={s.ImageGallery}>
-    //     <ImageGalleryItem prop={items} />
-    //   </ul>
-    //   <Button onClick={this.loadMore} />
-    // </>
-    // );
-    // }
 
     return (
       <>
