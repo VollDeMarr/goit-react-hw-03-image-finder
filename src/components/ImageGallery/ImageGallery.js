@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import s from './ImageGallery.module.css';
 
@@ -11,6 +12,8 @@ class ImageGallery extends Component {
     KEY: '28064028-9753e04b4800a7fc07442f07d',
     error: null,
     status: 'idle',
+    isOpenModal: false,
+    modalData: '',
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -49,9 +52,23 @@ class ImageGallery extends Component {
     });
   };
 
-  render() {
-    const { items, error, status } = this.state;
+  showModal = modalData => {
+    this.setState({
+      isOpenModal: true,
+      modalData,
+    });
+  };
 
+  closeModal = () => {
+    this.setState({
+      isOpenModal: false,
+    });
+  };
+
+  render() {
+    // const { items, error, status,  } = this.state;
+    const { items, error, status, isOpenModal, modalData } = this.state;
+    const { closeModal, loadMore, showModal } = this;
     return (
       <>
         {status === 'idle' && <h2>Введіть ваш запит</h2>}
@@ -59,10 +76,16 @@ class ImageGallery extends Component {
         {status === 'rejected' && <h1>{error.message}</h1>}
         <>
           <ul className={s.ImageGallery}>
-            <ImageGalleryItem prop={items} />
+            <ImageGalleryItem items={items} onClick={showModal} />
           </ul>
-          {status !== 'idle' && <Button onClick={this.loadMore} />}
+          {status !== 'idle' && <Button onClick={loadMore} />}
         </>
+        {/* <Modal prop={items} alt="big brother is watching you"/> */}
+        {isOpenModal && (
+          <Modal close={closeModal}>
+            <img src={modalData} alt="big brother is watching you" />
+          </Modal>
+        )}
       </>
     );
   }
